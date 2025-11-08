@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef: GOCOOL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="./images/logo.png">
+</head>
+<style>
+    @font-face {
+        font-family: "Delight";
+        src: url("fonts/Delight-Regular.woff2") format("woff2"),
+            url("fonts/Delight-Regular.woff") format("woff");
+        font-weight: 400;  /* Regular */
+        font-style: normal;
+    }
+    * {
+        cursor: none;
+
+    }
+    body{
+        letter-spacing: 0px;
+        color: #2B2B2B;
+        font-family: "Delight", sans-serif;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #e6a56a;
+        background: linear-gradient(180deg, rgba(230, 165, 106, 1) 0%, rgba(255, 244, 233, 1) 78%);
+    }
+    @media (min-width: 1001px) {
+        .social-icons-hidden{
+            display: none;
+            visibility: hidden;
+        }
+    }
+
+    .cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 45px;
+        height: 45px;
+        background: url('./images/spoon.png') no-repeat center/contain;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        transition: transform 0.05s linear;
+        z-index: 9999;
+    }
+    .div-container{
+        display: flex;
+        justify-content: flex-start;
+        height: 100%;
+        width: 100%;
+    }
+
+    .div-item-1{
+        /* height: 100%; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 45vw;
+    }
+    .div-item-2{
+        width: 48vw ; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* align-items: center; */
+        padding: 13vh 0;
+    }
+
+    .img-1{
+        border-radius: 30px;
+        height: 74vh
+    }
+    .logo-img{
+        width: 12vw;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    i{
+        margin: 0;
+        padding: 0;
+        font-size: 30px;
+        color: #2B2B2B;
+        width: 35px;
+        height: 20px;
+        transition: all ease-in-out 100ms;
+    }
+    .instagram:hover{
+        color: #FE0077;
+        transform: scale(1.2)
+;
+    }
+    .youtube:hover{
+        color: #FF0033;
+        transform: scale(1.2)
+    }
+    .facebook:hover{
+        color: #0766FF;
+        transform: scale(1.2)
+    }
+    .social-icons{
+        display: flex;
+        justify-content: space-between;
+        width: 130px;
+    }
+    h1::after {
+        content: "■";
+        font-size: 10px;
+        margin-left: 5px;
+    }
+    h1{
+        margin: 0;
+        font-size: 63px;
+        letter-spacing: -3px;
+        line-height: 1.1;
+    }
+    p{
+        letter-spacing: -1px;
+        font-size: 17px;
+    }
+
+    /* Fullscreen preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;              /* background color while loading */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* Spinner animation */
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #ccc;
+  border-top: 6px solid #E6750D ;  /* spinner color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Hide preloader smoothly */
+#preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Spin keyframes */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Optional: fade-in effect for content */
+.content {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+body.loaded .content {
+  opacity: 1;
+}
+
+@media (max-width: 1000px) {
+  body {
+    overflow-x: hidden;
+  }
+  .social-icons-hidden{
+    visibility: visible;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+  }
+
+  .div-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    padding: 5vh 5vw;
+  }
+
+  .div-item-1,
+  .div-item-2 {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* ✅ Order: logo → text → image → icons */
+  .div-item-2 {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4vh 0;
+  }
+
+  .div-item-1 {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+  }
+
+  .social-icons {
+    display: none;
+  }
+
+  /* ✅ Adjust image and text sizes */
+  .img-1 {
+    width: 85vw;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  .logo-img {
+    width: 35vw;
+    max-width: 180px;
+  }
+
+  h1 {
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: -2px;
+  }
+
+  p {
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  i {
+    font-size: 28px;
+  }
+
+  .cursor {
+    display: none; /* hide fancy cursor on small devices */
+  }
+}
+
+
+</style>
+<body>
+
+    <!-- Loader -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+    <div class="div-container">
+
+        <div class="div-item-1">
+            <img alt="ok" class="img-1" src="./images/cheif.jpg" >
+                <div class="social-icons-hidden">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fab fa-instagram instagram"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <i class="fa-brands fa-youtube youtube"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook facebook"></i>
+                    </a>
+            </div>
+        </div>
+
+        <div class="div-item-2">
+            <div style="display: flex; justify-content: center;">
+                <img class="logo-img" alt="logo" src="./images/logo.png" >
+            </div>
+            <div class="text-content-div">
+                <p style="margin: 0; margin-bottom: 15px; text-align: center;">We're Still</p>
+                <h1 class="ok">Cooking Our Website</h1>
+                <p style="margin: 0; margin-top: 15px; text-align: center;">We are going to launch our website <span style="color: #E25C07;">Very Soon,</span></p>
+                <p style="margin: 0; margin-top: 10px; text-align: center;">Stay Tune.</p>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <div class="social-icons">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fab fa-instagram instagram"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <i class="fa-brands fa-youtube youtube"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="cursor"></div>
+</body>
+<script>
+    window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        preloader.classList.add("hide");
+
+        // Add a slight delay for smooth transition
+        setTimeout(() => {
+            document.body.classList.add("loaded");
+        }, 600);
+    });
+    //  Cursor JS
+    const cursor = document.querySelector(".cursor");
+
+    document.addEventListener("mousemove", (e) => {
+    cursor.style.top = `${e.clientY}px`;
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.opacity = "1"; // show when moving
+    });
+
+    // 🐝 Hide cursor when mouse leaves page
+    document.addEventListener("mouseleave", () => {
+    cursor.style.opacity = "0";
+    });
+
+    // 🐝 Show cursor again when mouse enters page
+    document.addEventListener("mouseenter", () => {
+    cursor.style.opacity = "1";
+    });
+
+
+</script>
+</html>
